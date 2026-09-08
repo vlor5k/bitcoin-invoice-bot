@@ -12,10 +12,12 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
+    "@types/qr-image": "^3.2.11",
     "bip32": "^5.0.1",
     "bitcoinjs-lib": "^7.0.2",
     "discord.js": "^14.27.0",
     "dotenv": "^17.4.2",
+    "qr-image": "^3.2.0",
     "tiny-secp256k1": "^2.2.4"
   }
 }
