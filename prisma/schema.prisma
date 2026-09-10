@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
@@ -10,4 +5,20 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+}
+
+enum TransactionStatus {
+  PENDING // payor has not broadcasted a valid transaction yet
+  CONFIRMING // transaction has been spotted in mempool, but not mined yet
+  CONFIRMED // transaction has been mined into a block
+}
+
+model Transaction {
+  id          Int               @id @default(autoincrement())
+  derivation  Int               @unique // m/84'/0'/0'/0/{derivation}
+  label       String?
+  amount_sats Int
+  status      TransactionStatus
+  created     DateTime          @default(now())
+  txid        String?           // fill out once confirmed
 }
