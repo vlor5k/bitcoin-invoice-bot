@@ -16,6 +16,7 @@ enum TransactionStatus {
 model Transaction {
   id          Int               @id @default(autoincrement())
   derivation  Int               @unique // m/84'/0'/0'/0/{derivation}
+  address     String            @unique
   label       String?
   amount_sats Int
   status      TransactionStatus
