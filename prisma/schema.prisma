@@ -22,4 +22,5 @@ model Transaction {
   status      TransactionStatus
   created     DateTime          @default(now())
   txid        String?           // fill out once confirmed
+  vout_n      Int               // so that we can get it from utxo set
 }
